@@ -1,0 +1,9 @@
+.employee {
+  display: flex;
+  flex-direction: row;
+  width: 70vw;
+  min-height: 100px;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom: 1px dotted #9a9fa9;
+}

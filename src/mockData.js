@@ -1,0 +1,60 @@
+const employeesData = [
+	{
+    id: '1',
+		picture: 'https://randomuser.me/api/portraits/men/86.jpg',
+		firstName: 'Mischa',
+		lastName: 'Barton',
+    position: 'a1',
+    manager: '0',
+  },
+	{
+    id: '2',
+		picture: 'https://randomuser.me/api/portraits/women/23.jpg',
+		firstName: 'Jaslene',
+		lastName: 'Val',
+    position: 'a2',
+    manager: '1',
+	},
+	{
+    id: '3',
+		picture: 'https://randomuser.me/api/portraits/women/90.jpg',
+		firstName: 'Ella',
+		lastName: 'Purnell',
+    position: 'c4',
+    manager: '2',
+	},
+	{
+    id: '4',
+		picture: 'https://randomuser.me/api/portraits/men/44.jpg',
+		firstName: 'Brian',
+		lastName: 'Smith',
+    position: 'b1',
+    manager: '2',
+	},
+	{
+    id: '5',
+		picture: 'https://uifaces.co/our-content/donated/BMGfa1yq.png',
+		firstName: 'Beau',
+		lastName: 'Simensen',
+    position: 'd1',
+    manager: '4',
+	},
+  {
+    id: '6',
+		picture: 'https://randomuser.me/api/portraits/women/9.jpg',
+		firstName: 'Eliza',
+		lastName: 'Coupe',
+    position: 'c5',
+    manager: '4',
+	},
+	{
+    id: '7',
+		picture: 'https://randomuser.me/api/portraits/men/14.jpg',
+		firstName: 'Phill',
+		lastName: 'Kernes',
+    position: 'd1',
+    manager: '4',
+	},
+];
+
+export default employeesData;
