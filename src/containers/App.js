@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-ro
 import EmployeeList from './EmployeeList';
 import EmployeeDetails from './EmployeeDetails';
 
-import employeesData from '../mockData';
+import { employeesData, tasksData } from '../mockData';
 import './App.css';
 
 function App() {
@@ -16,8 +16,27 @@ function App() {
     setEmployees(employeesData);
   },[]);
 
-  const onClickViewEmployee = (employee) => {
-    setCurrentEmployee(employee);
+  const onClickViewEmployee = (id) => {
+    let foundRecord = employees.find(employee => employee.id === id );
+    if(foundRecord) {
+      setCurrentEmployee(foundRecord);
+    } else {
+      setCurrentEmployee(null);
+      renderNotFound();
+    }
+  }
+
+  const renderNotFound = () => (
+		<>
+			<p>Page not found</p>
+			<Link to='/'>go back</Link>
+		</>
+	);
+  
+  if(!employees) {
+    return (
+      <p>loading...</p>
+    );
   }
 
 	return (
@@ -31,14 +50,11 @@ function App() {
 						</Route>
 
 						<Route path='/employee/:employeeId'>
-							<EmployeeDetails employee={currentEmployee}/>
+							<EmployeeDetails employee={currentEmployee} employeeTasks={tasksData}/>
 						</Route>
 
             <Route>
-							<div>
-                <Link to='/'>go back</Link>
-                {/* <Redirect to='/' /> */}
-              </div>
+              {renderNotFound()}
 						</Route>
 
 					</Switch>

@@ -1,27 +1,21 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import DataTable from '../components/DataTable';
+import Button from '@material-ui/core/Button';
+
+import { subordinatesData } from '../mockData';
 import './EmployeeDetails.css';
 
-// import DataTable from '../components/DataTable';
-
-const EmployeeDetails = ({ employee }) => {
+const EmployeeDetails = ({ employee, employeeTasks }) => {
 	const { employeeId } = useParams();
+  const subordinates = subordinatesData(employee.id);
 
 	useEffect(() => {
-		console.log(employee);
 		if (!employee) {
 			// TODO: fetch employee by employeeId
+			// if not found, fetch not found component
 		}
 	}, []);
-
-	const employeeTemp = {
-		id: '7',
-		picture: 'https://randomuser.me/api/portraits/men/11.jpg',
-		firstName: 'Phill',
-		lastName: 'Kernes',
-		position: '32323232323232323',
-		manager: '234234234234234234234234',
-	};
 
 	return (
 		<div className='container'>
@@ -29,35 +23,39 @@ const EmployeeDetails = ({ employee }) => {
 				<div
 					className='picture'
 					style={{
-						backgroundImage: `url(${employeeTemp.picture})`,
+						backgroundImage: `url(${employee.picture})`,
 					}}
 				/>
-
 				<div className='personalDetailsGrid'>
 					<div>Name:</div>
-					<div>{employeeTemp.firstName}</div>
+					<div>{employee.firstName}</div>
 					<div></div>
 					<div>Position:</div>
-					<div>{employeeTemp.position}</div>
+					<div>{employee.position}</div>
 					<div></div>
-					<div class='divider'></div>
+					<div className='divider'></div>
 					<div>Manager:</div>
-					<div>{employeeTemp.manager}</div>
-					<button>Report</button>
+					<div>{employee.manager}</div>
+					<Button variant='contained' color='primary' onClick={() => {}}>
+						Report
+					</Button>
 				</div>
 			</div>
+			<div className='divider'></div>
 
-			<div className='flex-container'>
+			<div className='flex-container-col'>
+				<h6>My Tasks</h6>
 
-          {/* <DataTable /> */}
+				<DataTable rows={employeeTasks} objType='task' />
+			</div>
 
-      </div>
-			<div className='flex-container'>
+			<div className='flex-container-col'>
+				<h6>My Subordinates</h6>
 
-        
-      </div>
+				<DataTable rows={subordinates} buttonText='Assign Task' objType='subordinate' clickHandler={() => {}}/>
+			</div>
 		</div>
 	);
-}
+};
 
 export default EmployeeDetails;
